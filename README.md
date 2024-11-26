@@ -1,14 +1,14 @@
+基于transformer 的简易翻译模型
+
 简易封装了一下(目前仅单卡)
 
 抄的项目
 
 https://github.com/hinesboy/transformer-simple
 
-
 分词器使用 nltk，如果要更改在 prepare_data.py 里 PrepareData.load_data 修改
 
 jieba等其他库有待试验
-
 
 更多参数在./YaDeYaDe/parser.py 里修改
 
@@ -24,7 +24,6 @@ Train(
 	epochs=5
 ).start()
 ```
-
 
 ## Inf
 
