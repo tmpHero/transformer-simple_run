@@ -6,7 +6,7 @@
 
 https://github.com/hinesboy/transformer-simple
 
-分词器使用 nltk，如果要更改在 prepare_data.py 里 PrepareData.load_data 修改
+分词器使用 nltk，如果要更改在 ./YaDeYaDe/prepare_data.py 里 PrepareData.load_data 修改
 
 jieba等其他库有待试验
 
