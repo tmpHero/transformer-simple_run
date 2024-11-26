@@ -1,0 +1,7 @@
+venv
+data
+cache
+output
+
+__pycache__
+YaDeYaDe/__pycache__
