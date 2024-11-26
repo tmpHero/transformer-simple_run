@@ -64,7 +64,7 @@ def init_model(src_vocab, tgt_vocab, N = 6, d_model = 512, d_ff = 2048, h = 8, d
 """
 class Train:
     def __init__(self, train_file_path: str, dev_file_path: str, save_path: str, epochs: int):
-        args.train_file, args.dev_file, args.save_file = \
+        args.train_file, args.dev_file, args.save_file, args.epochs = \
             train_file_path, dev_file_path, save_path, epochs
         self.__data = PrepareData()
         self._save_data_as_pickle()
