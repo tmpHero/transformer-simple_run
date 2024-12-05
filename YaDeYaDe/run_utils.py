@@ -145,6 +145,7 @@ class TimeoutDecorator:
         translate_text: 翻译文本
             @param input_text: Input text
             @param timeout: Timeout period
+            @param mode: Returns the Boolean type or an error directly
             @return: str or False
 """
 class Translate:
@@ -157,14 +158,14 @@ class Translate:
         self.__data = self._load_word(word_file_path)
         self.__model = self._load_model(model_path)
 
-    def translate_text(self, input_text: str, timeout:float = 5.0) -> str|bool:
+    def translate_text(self, input_text: str, timeout:float = 5.0, mode: bool = False) -> str|bool:
         text_len: int = len(input_text)
         # 多少字符多少时间需要测试, 误差时间默认 1 s
         # words_per_second: float = 12
         # time_error_value: float = 1
         # timeout: float = text_len / words_per_second + time_error_value
 
-        @TimeoutDecorator(timeout=timeout)
+        @TimeoutDecorator(timeout=timeout, mode=mode)
         def _translate_text():
             return translate_sentence(self.__model, input_text, self.__data, args)
         return _translate_text()

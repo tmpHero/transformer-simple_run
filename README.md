@@ -18,7 +18,6 @@ jieba等其他库有待试验
 
 `pip install -r requirements.txt`
 
-
 ## Train
 
 ```python
@@ -49,6 +48,7 @@ from YaDeYaDe.run_utils import *
         translate_text: 翻译文本
             @param input_text: Input text
             @param timeout: Timeout period
+	    @param mode: Returns the Boolean type or an error directly
             @return: str or False
 """
 
