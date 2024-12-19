@@ -7,6 +7,15 @@ from torch.autograd import Variable
 from .parser import args
 from .utils import seq_padding, subsequent_mask
 
+
+
+
+def error_log(input_text: str) -> None:
+    with open('error_log.text', 'a', encoding='utf-8') as f:
+        f.write(input_text)
+
+
+
 class PrepareData:
     def __init__(self):
 
@@ -31,10 +40,17 @@ class PrepareData:
         cn = []
         with open(path, 'r', encoding='utf-8') as f:
             for line in f:
-                line = line.strip().split('\t')
+                if '\t' in line:
+                    lines = line.strip().split('\t')
+                elif '|' in line:
+                    lines = line.strip().split('|')
+                
+                if len(lines) != 2:
+                    error_log(line)
+                    continue
 
-                en.append(["BOS"] + source_text_tokenize(line[0]) + ["EOS"])
-                cn.append(["BOS"] + result_text_tokenize(line[1]) + ["EOS"])
+                en.append(["BOS"] + source_text_tokenize(lines[0]) + ["EOS"])
+                cn.append(["BOS"] + result_text_tokenize(lines[1]) + ["EOS"])
 
         return en, cn
     
