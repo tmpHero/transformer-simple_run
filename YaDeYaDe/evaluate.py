@@ -6,7 +6,7 @@ from .parser import args
 from torch.autograd import Variable
 from .utils import subsequent_mask
 
-from nltk import word_tokenize
+from .text_tokenize_tool import source_text_tokenize
 
 def log(data, timestamp):
     file = open(f'log/log-{timestamp}.txt', 'a')
@@ -62,7 +62,7 @@ def evaluate(data, model):
 
 def translate_sentence(model, en_sentence, data, args):
     # 1. 英文句子的分词和ID化
-    en_tokens = ["BOS"] + word_tokenize(en_sentence.lower()) + ["EOS"]
+    en_tokens = ["BOS"] + source_text_tokenize(en_sentence) + ["EOS"]
     en_ids = [data['en_word_dict'].get(w, data['en_word_dict']['UNK']) for w in en_tokens]
     
     # 2. 创建源语言输入张量并构建掩码

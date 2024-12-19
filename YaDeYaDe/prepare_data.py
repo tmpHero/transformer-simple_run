@@ -1,7 +1,7 @@
 import os
 import torch
 import numpy as np
-from nltk import word_tokenize
+from .text_tokenize_tool import *
 from collections import Counter
 from torch.autograd import Variable
 from .parser import args
@@ -33,8 +33,8 @@ class PrepareData:
             for line in f:
                 line = line.strip().split('\t')
 
-                en.append(["BOS"] + word_tokenize(line[0].lower()) + ["EOS"])
-                cn.append(["BOS"] + word_tokenize(" ".join([w for w in line[1]])) + ["EOS"])
+                en.append(["BOS"] + source_text_tokenize(line[0]) + ["EOS"])
+                cn.append(["BOS"] + result_text_tokenize(line[1]) + ["EOS"])
 
         return en, cn
     
