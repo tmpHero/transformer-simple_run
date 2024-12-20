@@ -6,9 +6,11 @@
 
 https://github.com/hinesboy/transformer-simple
 
-分词器使用 nltk，如果要更改在 ./YaDeYaDe/text_tokenize_tool.py 里更改
+分词器使用 nltk 和 jieba，如果要更改
 
-jieba等其他库有待试验
+在 ./YaDeYaDe/text_tokenize_tool.py 里重构 source_text_tokenize 和 result_text_tokenize 函数
+
+自带了英语分词，中文分词，简易分词
 
 更多参数在./YaDeYaDe/parser.py 里修改
 
